@@ -1,39 +1,29 @@
 import resolve from '@rollup/plugin-node-resolve'
-import typescript from '@rollup/plugin-typescript'
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
+import json from '@rollup/plugin-json'
 
 export default {
-  input: './index.ts',
+  input: './src/index.js',
   output: [
     {
       dir: 'dist',
       format: 'cjs',
       entryFileNames: '[name].cjs.js',
-      sourcemap: true, // 是否输出sourcemap
+      sourcemap: false,
     },
     {
       dir: 'dist',
       format: 'esm',
       entryFileNames: '[name].esm.js',
-      sourcemap: true, // 是否输出sourcemap
+      sourcemap: false,
     },
     {
       dir: 'dist',
       format: 'umd',
       entryFileNames: '[name].umd.js',
-      name: 'FE_utils', // umd模块名称，相当于一个命名空间，会自动挂载到window下面
+      name: 'FE_utils',
       sourcemap: true,
-      plugins: [terser()],
     },
   ],
-  plugins: [
-    resolve(),
-    commonjs(),
-    typescript({
-      outDir: 'dist',
-      declarationDir: 'dist/types',
-      module: 'ESNext',
-    }),
-  ],
+  plugins: [resolve(), commonjs(), json()],
 }

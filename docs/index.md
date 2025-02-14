@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 'Versakit'
   image:
-    src: https://raw.githubusercontent.com/lenran659/Versakit/main/logo.svg
+    src: logo.svg
     alt: Versakit
   actions:
     - theme: brand

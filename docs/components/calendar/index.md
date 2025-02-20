@@ -6,7 +6,7 @@
 
 Calendar 组件支持通过 `v-model` 进行日期选择，未指定时默认显示当前月份。
 
-<demo vue="./example/basic.vue"></demo>
+<demo vue="./example/base.vue"></demo>
 
 ## 自定义单元格
 
@@ -24,45 +24,30 @@ Calendar 组件支持通过 `v-model` 进行日期选择，未指定时默认显
 
 ### Calendar 属性
 
-| 属性                  | 说明           | 类型      | 默认值  |
-| --------------------- | -------------- | --------- | ------- |
-| `model-value/v-model` | 绑定值         | `Date`    | -       |
-| `readonly`           | 是否只读       | `boolean` | `false` |
+| 属性                  | 说明     | 类型      | 默认值  |
+| --------------------- | -------- | --------- | ------- |
+| `model-value/v-model` | 绑定值   | `Date`    | -       |
+| `readonly`            | 是否只读 | `boolean` | `false` |
 
 ### Calendar 插槽
 
-| 插槽名     | 说明                     | 作用域参数                                                                                                                    |
-| ---------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| `header`   | 自定义头部内容           | `{ date: Date, prevMonth: () => void, nextMonth: () => void, prevYear: () => void, nextYear: () => void, today: () => void }` |
-| `date-cell`| 自定义单元格内容         | `{ data: { type: 'prev-month' \| 'current-month' \| 'next-month', isSelected: boolean, day: string, date: Date } }`           |
+| 插槽名      | 说明             | 作用域参数                                                                                                                    |
+| ----------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `header`    | 自定义头部内容   | `{ date: Date, prevMonth: () => void, nextMonth: () => void, prevYear: () => void, nextYear: () => void, today: () => void }` |
+| `date-cell` | 自定义单元格内容 | `{ data: { type: 'prev-month' \| 'current-month' \| 'next-month', isSelected: boolean, day: string, date: Date } }`           |
 
 ### Calendar 事件
 
 | 事件名   | 说明               | 类型                    |
 | -------- | ------------------ | ----------------------- |
-| `change` | 选中日期变化时触发  | `(value: Date) => void` |
+| `change` | 选中日期变化时触发 | `(value: Date) => void` |
 
 ### Calendar 方法
 
-| 方法名     | 说明         | 类型            |
-| ---------- | ------------ | --------------- |
-| `prevYear` | 切换到上一年  | `() => void`    |
-| `nextYear` | 切换到下一年  | `() => void`    |
-| `prevMonth`| 切换到上一月  | `() => void`    |
-| `nextMonth`| 切换到下一月  | `() => void`    |
-| `today`    | 切换到今天    | `() => void`    |
-
-<!-- ## 类型声明
-
-<details>
-  <summary>显示声明</summary>
-
-  ts
-type DateCellData = {
-type: 'prev-month' | 'current-month' | 'next-month'
-isSelected: boolean
-day: string // YYYY-MM-DD 格式
-date: Date
-} 
-</details>
--->
+| 方法名      | 说明         | 类型         |
+| ----------- | ------------ | ------------ |
+| `prevYear`  | 切换到上一年 | `() => void` |
+| `nextYear`  | 切换到下一年 | `() => void` |
+| `prevMonth` | 切换到上一月 | `() => void` |
+| `nextMonth` | 切换到下一月 | `() => void` |
+| `today`     | 切换到今天   | `() => void` |

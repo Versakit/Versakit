@@ -2,7 +2,7 @@
   <div class="ver-calendar">
     <!-- 添加默认头部插槽 -->
     <slot
-      name="header" 
+      name="header"
       :date="currentDate"
       :prev-month="prevMonth"
       :next-month="nextMonth"
@@ -22,12 +22,12 @@
         </VerButton>
       </div>
     </slot>
-    
+
     <div class="ver-calendar-body">
       <div class="ver-calendar-weeks">
         <span v-for="week in weeks" :key="week">{{ week }}</span>
       </div>
-      
+
       <div class="ver-calendar-dates">
         <div
           v-for="(cell, index) in dates"
@@ -36,15 +36,12 @@
             'ver-calendar-cell',
             `ver-calendar-cell-${cell.type}`,
             {
-              'is-selected': isSelected(cell.date)
-            }
+              'is-selected': isSelected(cell.date),
+            },
           ]"
           @click="handleDateClick(cell)"
         >
-          <slot 
-            name="date-cell" 
-            :data="getCellData(cell)"
-          >
+          <slot name="date-cell" :data="getCellData(cell)">
             {{ cell.text }}
           </slot>
         </div>
@@ -59,7 +56,7 @@ import type {
   CalendarProps,
   CalendarEmits,
   DateCell,
-  DateCellData
+  DateCellData,
 } from '../type/index'
 import { VerButton } from '../../button/index'
 
@@ -67,7 +64,7 @@ defineOptions({ name: 'VerCalendar' })
 
 const props = withDefaults(defineProps<CalendarProps>(), {
   modelValue: () => new Date(),
-  readonly: false
+  readonly: false,
 })
 
 const emit = defineEmits<CalendarEmits>()
@@ -87,27 +84,39 @@ const dates = computed(() => {
   const firstDayWeek = firstDay.getDay()
 
   // 上月剩余日期
-  const prevMonthDays = new Date(currentYear.value, currentMonth.value, 0).getDate()
+  const prevMonthDays = new Date(
+    currentYear.value,
+    currentMonth.value,
+    0,
+  ).getDate()
   for (let i = firstDayWeek - 1; i >= 0; i--) {
-    const date = new Date(currentYear.value, currentMonth.value - 1, prevMonthDays - i)
+    const date = new Date(
+      currentYear.value,
+      currentMonth.value - 1,
+      prevMonthDays - i,
+    )
     ret.push({
       text: prevMonthDays - i,
       type: 'prev',
-      date
+      date,
     })
   }
-  
+
   // 本月日期
-  const currentMonthDays = new Date(currentYear.value, currentMonth.value + 1, 0).getDate()
+  const currentMonthDays = new Date(
+    currentYear.value,
+    currentMonth.value + 1,
+    0,
+  ).getDate()
   for (let i = 1; i <= currentMonthDays; i++) {
     const date = new Date(currentYear.value, currentMonth.value, i)
     ret.push({
       text: i,
       type: 'current',
-      date
+      date,
     })
   }
-  
+
   // 下月日期
   const nextMonthDays = 42 - ret.length
   for (let i = 1; i <= nextMonthDays; i++) {
@@ -115,7 +124,7 @@ const dates = computed(() => {
     ret.push({
       text: i,
       type: 'next',
-      date
+      date,
     })
   }
 
@@ -157,7 +166,6 @@ const handleDateClick = (cell: DateCell) => {
 
 // 判断日期是否选中
 const isSelected = (date: Date) => {
-
   return date.toDateString() === props.modelValue.toDateString()
 }
 
@@ -175,10 +183,9 @@ const getCellData = (cell: DateCell): DateCellData => {
     type: `${cell.type}-month` as 'prev-month' | 'current-month' | 'next-month',
     isSelected: isSelected(cell.date),
     day: formatDate(cell.date),
-    date: cell.date
+    date: cell.date,
   }
 }
-
 </script>
 
 <style>

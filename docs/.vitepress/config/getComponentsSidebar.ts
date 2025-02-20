@@ -45,6 +45,7 @@ export const getComponentsSidebar = (): DefaultTheme.Sidebar => {
         { text: 'GradientText 渐变文字', link: '/components/gradienttext/' },
         { text: 'Timeline 时间线', link: '/components/timeline/' },
         { text: 'Table 表格', link: '/components/table/' },
+        { text: 'Calendar 日历', link: '/components/calendar/' },
       ],
     },
     {

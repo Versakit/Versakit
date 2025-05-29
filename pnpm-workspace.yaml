@@ -1,7 +1,3 @@
 packages:
   - 'packages/*'
   - docs
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
-  - versakit-monorepo

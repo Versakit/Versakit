@@ -1,6 +1,6 @@
 {
   "name": "versakit-monorepo",
-  "version": "0.2.2",
+  "version": "0.3.10",
   "private": "true",
   "type": "module",
   "packageManager": "pnpm@8.15.3",
@@ -8,29 +8,13 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "pnpm --filter devplay dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "clean": "turbo run clean && rimraf node_modules/.cache",
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
-    "docs:build": "pnpm --filter docs docs:build",
-    "docs:dev": "pnpm --filter docs docs:dev",
-    "docs:preview": "turbo run preview --filter=docs",
-    "ui:build": "turbo run build --filter=@versakit/ui",
-    "ui-devops:build": "pnpm --filter ui build",
-    "resolvers:build": "turbo run build --filter=resolvers",
-    "test:ui": "vitest --ui",
     "preinstall": "node ./scripts/preinstall.js",
-    "lint:fix": "turbo run lint:fix",
     "lint:eslint": "eslint packages/**/*.{ts,vue} --cache --fix",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "commit": "git-cz",
-    "commitlint": "commitlint --config commitlint.config.cjs -e -V",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "changeset publish"
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
   },
   "config": {
     "commitizen": {
@@ -38,58 +22,34 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,vue}": [
+    "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write",
       "git add"
-    ],
-    "*.{scss,less,styl,html}": [
-      "prettier --write"
     ]
-  },
-  "dependencies": {
-    "eslint": "8",
-    "vue": "^3.5.12"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.9",
-    "@changesets/cli": "^2.28.1",
-    "@commitlint/cli": "^19.6.0",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.9.0",
-    "@types/postcss-pxtorem": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@vitejs/plugin-vue": "^5.1.4",
-    "@vitejs/plugin-vue-jsx": "^4.1.1",
-    "@vitest/ui": "^2.1.5",
-    "@vue/test-utils": "^2.4.6",
-    "@vue/tsconfig": "^0.5.1",
-    "autoprefixer": "^10.4.20",
     "commitizen": "^4.3.1",
-    "cssnano": "^7.0.6",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.32.0",
     "globals": "^15.12.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "jsdom": "^25.0.1",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^15.5.2",
     "npm-run-all2": "^7.0.1",
-    "postcss": "^8.4.49",
-    "postcss-pxtorem": "^6.1.0",
     "prettier": "^3.4.2",
     "rimraf": "^6.0.1",
-    "sass": "^1.84.0",
-    "turbo": "^2.5.0",
-    "typescript": "~5.6.3",
-    "unplugin-vue-macros": "^2.14.2",
-    "vite": "^6.0.11",
-    "vite-plugin-dts": "^4.3.0",
-    "vitest": "^2.1.5",
-    "vue-tsc": "^2.2.2"
+    "typescript": "~5.6.3"
   }
 }

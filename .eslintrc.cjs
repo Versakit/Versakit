@@ -8,13 +8,11 @@ module.exports = {
     jest: true,
   },
   /* 指定如何解析语法 */
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   /** 优先级低于 parse 的语法解析配置 */
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    parser: '@typescript-eslint/parser',
-    jsxPragma: 'React',
     ecmaFeatures: {
       jsx: true,
     },
@@ -22,14 +20,17 @@ module.exports = {
   /* 继承已有的规则 */
   extends: [
     'eslint:recommended',
-    'plugin:vue/vue3-essential',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  globals: {
-    defineRender: 'readonly',
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
+  settings: {
+    react: {
+      version: 'detect', // 自动检测React版本
+    },
   },
-  plugins: ['vue', '@typescript-eslint'],
   /*
    * "off" 或 0    ==>  关闭规则
    * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
@@ -52,11 +53,14 @@ module.exports = {
     '@typescript-eslint/no-namespace': 'off', // 禁止使用自定义 TypeScript 模块和命名空间。
     '@typescript-eslint/semi': 'off',
 
-    // eslint-plugin-vue (https://eslint.vuejs.org/rules/)
-    'vue/multi-word-component-names': 'off', // 要求组件名称始终为 “-” 链接的单词
-    'vue/script-setup-uses-vars': 'error', // 防止<script setup>使用的变量<template>被标记为未使用
-    'vue/no-mutating-props': 'off', // 不允许组件 prop的改变
-    'vue/attribute-hyphenation': 'off', // 对模板中的自定义组件强制执行属性命名样式
-    'vue/no-export-in-script-setup': 'off',
+    // React (https://github.com/jsx-eslint/eslint-plugin-react)
+    'react/prop-types': 'off', // 关闭prop-types检查(使用TypeScript时不需要)
+    'react/react-in-jsx-scope': 'off', // 不需要手动引入React
+    'react/display-name': 'off', // 不强制要求组件有displayName
+    'react/no-unescaped-entities': 'off', // 允许某些字符不转义
+
+    // React Hooks
+    'react-hooks/rules-of-hooks': 'error', // 检查hook使用规则
+    'react-hooks/exhaustive-deps': 'warn', // 检查effect依赖
   },
 }

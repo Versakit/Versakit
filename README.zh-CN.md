@@ -51,12 +51,12 @@ pnpm add @versakit/ui
 ```
 
 ```js
-import App from './App.vue'
-import { createApp } from 'vue'
-import Versakit from '@versakit/ui' // 引入组件库
-import '@versakit/ui/dist/style.css' // 引入样式
+import App from "./App.vue";
+import { createApp } from "vue";
+import Versakit from "@versakit/ui"; // 引入组件库
+import "@versakit/ui/dist/style.css"; // 引入样式
 
-createApp(App).use(Versakit).mount('#app')
+createApp(App).use(Versakit).mount("#app");
 ```
 
 ## 四、文档地址

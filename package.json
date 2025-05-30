@@ -8,7 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "preinstall": "node ./scripts/preinstall.js"
+    "preinstall": "node ./scripts/preinstall.js",
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

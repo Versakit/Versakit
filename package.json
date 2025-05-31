@@ -5,7 +5,8 @@
   "type": "module",
   "packageManager": "pnpm@8.15.3",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "docs"
   ],
   "scripts": {
     "preinstall": "node ./scripts/preinstall.js",
@@ -15,8 +16,15 @@
     "lint:fix": "biome check --apply .",
     "lint:ui": "biome check packages/versakit-ui",
     "format:ui": "biome format --write packages/versakit-ui",
+    "dev:ui": "pnpm --filter @versakit/ui dev",
     "build:ui": "pnpm --filter @versakit/ui build",
-    "monorepo": "node ./scripts/monorepo-helper.js"
+    "test:ui": "pnpm --filter @versakit/ui test",
+    "docs:dev": "pnpm --filter @versakit/docs dev",
+    "docs:build": "pnpm --filter @versakit/docs build",
+    "docs:preview": "pnpm --filter @versakit/docs preview",
+    "build:all": "pnpm build:ui && pnpm build:docs",
+    "dev": "pnpm -r --parallel dev",
+    "clean": "rimraf **/node_modules **/dist **/.turbo"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

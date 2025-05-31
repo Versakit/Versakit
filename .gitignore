@@ -33,3 +33,5 @@ docs/.vitepress/dist
 *.tsbuildinfo
 desktop.ini
 
+
+*storybook.log

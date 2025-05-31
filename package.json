@@ -1,26 +1,35 @@
 {
-	"name": "versakit-monorepo",
-	"version": "0.3.10",
-	"private": "true",
-	"type": "module",
-	"packageManager": "pnpm@8.15.3",
-	"workspaces": ["packages/*"],
-	"scripts": {
-		"preinstall": "node ./scripts/preinstall.js",
-		"commitlint": "commitlint --edit"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@commitlint/cli": "^19.8.1",
-		"@commitlint/config-conventional": "^19.8.1",
-		"@tsconfig/node22": "^22.0.0",
-		"@types/node": "^22.9.0",
-		"commitizen": "^4.3.1",
-		"globals": "^15.12.0",
-		"jsdom": "^25.0.1",
-		"lefthook": "^1.11.13",
-		"npm-run-all2": "^7.0.1",
-		"rimraf": "^6.0.1",
-		"typescript": "~5.6.3"
-	}
+  "name": "versakit-monorepo",
+  "version": "0.3.10",
+  "private": "true",
+  "type": "module",
+  "packageManager": "pnpm@8.15.3",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "preinstall": "node ./scripts/preinstall.js",
+    "commitlint": "commitlint --edit",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --apply .",
+    "lint:ui": "biome check packages/versakit-ui",
+    "format:ui": "biome format --write packages/versakit-ui",
+    "build:ui": "pnpm --filter @versakit/ui build",
+    "monorepo": "node ./scripts/monorepo-helper.js"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.9.0",
+    "commitizen": "^4.3.1",
+    "globals": "^15.12.0",
+    "jsdom": "^25.0.1",
+    "lefthook": "^1.11.13",
+    "npm-run-all2": "^7.0.1",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.6.3"
+  }
 }

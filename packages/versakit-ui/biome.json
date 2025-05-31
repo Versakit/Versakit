@@ -1,0 +1,24 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"extends": ["../../biome.json"],
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"lineWidth": 100
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"recommended": true,
+				"useKeyWithClickEvents": "error",
+				"useValidAnchor": "error"
+			}
+		}
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"ignore": ["**/node_modules/**", "**/dist/**", "**/.git/**", "**/coverage/**"]
+	}
+}

@@ -6,12 +6,20 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false,
-		"ignore": []
+		"ignoreUnknown": true,
+		"ignore": [
+			"**/node_modules/**",
+			"**/dist/**",
+			"**/.git/**",
+			"**/coverage/**",
+			"**/*.json",
+			"**/tsconfig*.json"
+		]
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"lineWidth": 100
 	},
 	"organizeImports": {
 		"enabled": true
@@ -19,12 +27,44 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"a11y": {
+				"recommended": true
+			},
+			"correctness": {
+				"recommended": true
+			},
+			"suspicious": {
+				"recommended": true,
+				"noExplicitAny": "error"
+			},
+			"style": {
+				"recommended": true,
+				"useImportType": "error",
+				"useExportType": "error"
+			},
+			"nursery": {
+				"recommended": true,
+				"useConsistentMemberAccessibility": "error",
+				"noStaticElementInteractions": "warn"
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"quoteStyle": "double",
+			"trailingCommas": "all",
+			"semicolons": "always"
+		}
+	},
+	"json": {
+		"formatter": {
+			"enabled": true
+		}
+	},
+	"css": {
+		"formatter": {
+			"enabled": true
 		}
 	}
 }
